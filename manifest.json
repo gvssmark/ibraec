@@ -13,8 +13,8 @@
         "type": "image/png",
         "sizes": "512x512"
       }
-
     ],
+
     "start_url": "index.html",
     "background_color": "#ccff99",
       "theme_color": "#3367D6",
