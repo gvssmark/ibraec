@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBRA-APTS</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#317EFB" />
+    <link rel="apple-touch-icon" href="images/ibra512.png">
+    <script src="https://drive.google.com/uc?id=1EeiSTfOD-0UA4hz1bwKwW2T7KM1XnndGx"></script> 
+   <script src="https://gvssmark.github.io/ibra/insdata.js"></script> 
+
+<style>
+mark{background:blue; color:white; font-size:x-small}
+body {
+            width: 360px;
+            background-color: #fff2cc;
+            margin: auto;
+            font-size:small;
+            overscroll-behavior: contain;
+ box-sizing: border-box;
+}
+         a{text-decoration:none;}
+
+        .fam{background:yellow;}
+        .ibeab {background:pink;}
+        
+.active, .btn:hover {
+  background-color: red;
+  color: white;
+}
+
+        .badge {
+  display: inline-block;
+   padding: 0;
+    width: 25px;
+    height: 25px;    
+    line-height: 25px;
+    font-size: x-small;
+    font-weight: lighter !important;
+    color: #fff !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #d73d33;
+    border-radius:50px;
+//    position: relative;
+    top: -3px;
+    }
+
+.badge1{
+  display: inline-block;
+   padding: 0;
+    width: 25px;
+    height: 25px;    
+    line-height: 25px;
+    font-size: x-small;
+    font-weight: lighter !important;
+    color: black !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: yellow;
+    border-radius:50px;
+//    position: relative;
+    top: -3px;
+    }
+
+
+.eabbadge{
+  display: inline-block;
+   padding: 0;
+    width: 25px;
+    height: 25px;    
+    line-height: 25px;
+    font-size: x-small;
+    font-weight: lighter !important;
+    color: black !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: pink;
+    border-radius:50px;
+//    position: relative;
+    top: -3px;
+    }
+
+.insurancebadge{
+  display: inline-block;
+   padding: 0;
+    width: 10px;
+    height: 10px;    
+    line-height: 10px;
+    font-size: x-small;
+    font-weight: lighter !important;
+    color: green !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: green;
+    border-radius:50px;
+//    position: relative;
+    top: -3px;
+    }
+.insurancebigbadge{
+  display: inline-block;
+   padding: 0;
+    width: 25px;
+    height: 25px;    
+    line-height: 25px;
+    font-size: x-small;
+    font-weight: lighter !important;
+    color: white !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: green;
+    border-radius:50px;
+//    position: relative;
+    top: -3px;
+    }
+
+        #topHead {
+            text-align: center;
+            width: 360px;;
+            height: 50px;
+            position: fixed;
+            background-color: red;
+            top: 0px;
+            color: white;
+        }
+
+        #div2 {
+            width: 100%;
+            margin-left: 1px;
+            position: center;
+            ;
+            display: none"
+
+        }
+
+        #divFamPen {
+            display: none
+        }
+
+        #details {
+            margin-left: 5px;
+        }
+
+        #divNoPenAc {
+            display: none;
+        }
+
+        .container {
+            width: 100%;
+            display: block;
+        }
+
+        #divNoPenBr {
+            display: none;
+        }
+
+        #divNoSrno {
+            display: none;
+        }
+
+        #divplacesTable {
+            display: none;
+        }
+        #personsInThisCity {
+            display: none;
+        }
+
+        #divpenbrs {
+            display: none;
+        }
+
+        #div1 {
+            display: none;
+        }
+
+        #myInput {
+            margin-top: 80px;
+            width: 50%;
+            margin-left: 20%;
+            height: 30px;
+            border-radius: 15px;
+            background-color: cyan;
+            border: 0px;
+            outline: 0;
+        }
+
+        #getnames {
+            margin-left: 15px;
+            scroll: auto;
+        }
+
+        #ec {
+            width: 100%;
+            display: none
+        }
+
+        .bottomdiv {
+            bottom: 0px;
+            background: green;
+            position: fixed;
+            width: 360px;
+            height: 40px;
+
+        }
+
+        table {
+            /* Not required only for visualizing */
+            border-collapse: collapse;
+            ;
+            width: 95%;
+            margin-left: 5px;
+            margin-right: 1px;
+            border: 1px soild black;
+            
+        }
+
+        p {
+            
+        }
+
+        p {
+            margin-left: 5px;
+        }
+
+        b {
+            color: red;
+        }
+
+        #btn1 {
+            height: 40px;
+            padding: 0px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 80%;
+            margin-left: 30px; box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.4);border-radius: 25px; line-height: 15px;
+        }
+
+        .button2 {
+            background-color: #008CBA;
+        }
+
+        /* Blue */
+        .button3 {
+            background-color: #f44336;
+        }
+
+        /* Red */
+        .button4 {
+            background-color: #e7e7e7;
+            color: black;
+        }
+
+        /* Gray */
+        .button5 {
+            background-color: #555555;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 1px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #99ffcc;
+            margin: auto;
+            padding: 2px;
+            padding-bottom: 2px;
+            border: 1px solid #888;
+            width: 95%;
+            border-radius: 15px;
+            margin-top: 53px;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        #t1 {background:  0cyan;}
+        #t2 {background: 0cyan ;}
+        #t3 {background: 0pink;}
+        
+        
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+.list{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 8px 6px;
+  text-decoration: none;
+font-size:x-small;
+}
+
+
+</style>
+</head>
+
+<body>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h4 align=center id="nameHeader"></h4>
+            <p id="modalData"> </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="topHead">
+            <h4 align=center>Indian Bank Retirees' Association</h4>
+        </div>
+        <div id="buttonsDiv"><br><br><br>
+            <button onclick="searchClick()" class="button">Search by Name</button><br>
+            <button onclick="FamBtnClick()" class="button button2">Family Pensioners</button><br>
+            <button onclick="noPenAc()" class="button button3">Data Cleaning</button><br>
+      <!--      <button onclick="noPenbr()" class="button button4">No Pension Branch</button><br>
+            <button onclick="nosrno()" class="button button5">No SR Number</button><br> -->
+            <button onclick="placeStay()" class="button button1">Place of Stay</button><br>
+            <button onclick="brsPens()" class="button button2">Pension Branches</button><br>
+            <button onclick="ecShow()" class="button button4">Executive Committee</button><br>
+            <button onclick="allregionsMenu()" class="button button1">All Members</button><br>
+            <button onclick="welfare()" class="button button2">Welfare Schemes</button><br>
+              <button  class="button button4"><a href="https://gvssmark.github.io/ibra/ins.html" target="_blank" >Insurance</style> </a></button><br>
+</div>
+
+<div id="welf" style="display:none">
+    <iframe id="welfareIframe" style="height:800px; width:100%;"src="https://gvssmark.github.io/ibra/welfare.html" allowTransparency="true" background="transparent"></iframe>
+</div>
+
+
+<div id="div2">
+            <p id="details"></p>
+        </div>
+        <div class="bottomdiv">
+            <button onclick='hide()' id='btn1'>Home</button>
+        </div>
+    </div>
+
+    <div id="divFamPen">
+        <br><br>
+ <div style="background:powderblue; width:100%;   height:56px; margin-top:40px; top:0; position:fixed; ">
+      <input type="text" id='fampenSearch' onkeyup="filterFamPensionerName()"
+        style="margin-top:5px; width:180px; margin-left:25%; height:30px; border-radius:15px;  background-color: white;  border:0px;  outline:0;  "
+        placeholder="Search Service / Family Pensioner...">
+        <h4 style='margin-top:1px;' align=center>Family Pensioners</h4>
+</div>
+<br><br><br>
+ 
+        <p id='fampenlist'></p>
+    </div>
+
+    <div id="divNoPenAc">
+        <br><br>
+        <h4 align=center>Pension Account No Not available<span class='badge' id='penacno'></span></h4>
+        <p id='penac'></p>
+              <h4 align=center>Pension Branch Details Not available<span class='badge' id='penbrno'></span></h4>
+        <p id='penbrname'></p>  
+                <h4 align=center>SR Number Not available<span class='badge' id='srnonil'></span></h4>
+        <p id='nilSRNo'></p>
+    </div>
+
+    <div id="divNoPenBr">
+        <br><br>
+        <h4 align=center>Pension Branch Details Not available</h4>
+        <p id='penbrname'></p>
+    </div>
+
+    <div id="divNoSrno">
+        <br><br>
+        <h4 align=center>SR Number Not available</h4>
+        <p id='nilSRNo'></p>
+    </div>
+
+    <div id="divplacesTable">
+        <br><br>
+        <h4 align=center>Place of Stay</h4>
+        <p id='pdivplacesTable'></p>
+        <br><br>
+    </div>
+
+    <div id="divpenbrs">
+        <br><br>
+        <h4 align=center>Pension Branches</h4>
+        <p id='ppenbrs'></p>
+        <br><br>
+    </div>
+
+    <div id="div1">
+        <input type="text" id='myInput' placeholder="Search here..." onkeyup="dispdata()">
+        <p id='getnames'></p>
+    </div>
+    <div id="ec">
+    
+      <iframe style="height:1000px;width:100% ;"src="https://gvssmark.github.io/ibra/committee.html" allowTransparency="true" background="transparent"></iframe>
+        
+        <br>
+    </div>
+
+<div id="pensionInThisBranch">
+<p id="ParaPensionInThisBranch" ></p>
+</div>
+
+<div id="personsInThisCity">
+<p id="ParapersonsInThisCity" ></p>
+</div>
+
+<div id="regions" style="display:none">
+<div style="background:powderblue; top:0; ; height:40px; overflow:auto; position:fixed; width: 360px; ">
+<ul>
+  <li onclick="selectedRegion(allmemb,0)"  class="list active" >All</li>
+  <li  onclick="selectedRegion(vsp,1)" class="list" >VSP</li>
+  <li  onclick="selectedRegion(god,2)" class="list" >GOD</li>
+  <li  onclick="selectedRegion(vij,3)" class="list" >VIJ</li>
+  <li onclick="selectedRegion(seema,4)"  class="list" >SEEMA</li>
+  <li  onclick="selectedRegion(hyd,5)" class="list" >HYD</li>
+  <li  onclick="selectedRegion(oth,6)" class="list" >OTH</li>
+<li  onclick="selectedRegion(eab,7)" class="list" >eAB</li>
+  <li  onclick="selectedRegion(allMembNoWise,8)" class="list" >MNo</li>
+  
+
+</ul>
+</div>
+<div style="background:powderblue; ;   height:65px; margin-top:40px; top:0; position:fixed; width:360px">
+      <input type="text" id='input_fitterName' onkeyup="fiterName()"
+        style="margin-top:5px; width:180px; margin-left:25%; height:30px; border-radius:15px;  background-color: white;  border:0px;  outline:0;  "
+        placeholder="Search for a Member here...">
+        <h4 id='regionHeading'align=center style="margin-top:3px;"></h4>
+    </div>
+   <div style="; margin-top:105px; background:powderblue;">
+   <p id=paraInThisRegion></p>
+   </div>
+   
+   </div>
+
+
+
+    <script>
+function allregionsMenu(){
+ hideall()
+document.getElementById("regions").style.display = "block";
+}
+
+
+        function titleCase(str) {
+            return str.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
+        }
+        myVar = ""
+
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        url = 'https://script.google.com/macros/s/AKfycbzI9SDFOzYLYKRKJTlse0XpsEiF8XfbyxwUUH22evlGkEPDIt2V/exec'
+        async function getMyData() {
+            response = await fetch(url)
+            data = await response.json()
+            tempData = data["user"]
+            activeMembers = tempData.filter(a => a.name !== "")
+                .sort(function (a, b) { return a.name.localeCompare(b.name) });
+//activeMembers.forEach(function(element){element.pentype = (element.fampen.length>0 ? "fam" : "ser")})
+        //    familyPensioners = activeMembers.filter(a => a.fampen !== "").map(a => ({ id: a.id, name: a.name, fampen: a.fampen }));
+            activeMembers.forEach(function(element){element.IBorEAB = (element.area.substr(-3).toUpperCase() ==='EAB' ? "EAB" : "IB"), element.pentype = (element.fampen.length>0 ? "fam" : "ser")})
+familyPensioners = activeMembers.filter(a => a.fampen !== "").map(a => ({ id: a.id, name: a.name, fampen: a.fampen, ibeab: a.IBorEAB  }));
+activeMembers.forEach(function(element){element.insured = isInsured(element.srno)})  
+            noSbac = activeMembers.filter(a => a.sbac === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
+            noPensionBr = activeMembers.filter(a => a.pensionbr === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
+            noSrno = activeMembers.filter(a => a.srno === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
+      //     allplaces = activeMembers.filter(a => a.place !== "").map(a => a.place);
+
+     
+penacno.innerHTML=noSbac.length
+penbrno.innerHTML=noPensionBr.length
+srnonil.innerHTML=noSrno.length    
+ //           LivingIn = unq(allplaces).sort();
+  //          LivingIn = unq(LivingIn.map(function (e) {     return e.toUpperCase()}));
+//LivingIn = unq(activeMembers.filter(a => a.place !== "").map(a => a.place.toUpperCase()).sort());
+  LivingIn = [...new Set(activeMembers.map(a =>a.place.toUpperCase().trim()))].sort();
+          
+            placesTable = ""
+             LivingIn.forEach(function (val,index) { placesTable += "<tr><td><span onClick='funCityPerson(this.id)'  id='"+index+"'>" + val +"</span>" })
+
+           // allPenBranches = activeMembers.filter(a => a.pensionbr !== "").map(a => a.pensionbr);
+            PensionDrawingBranch = unq(activeMembers.filter(a => a.pensionbr !== "").map(a => a.pensionbr.toUpperCase())).sort();
+            penbrs = ""
+            PensionDrawingBranch.forEach(function (val,index) { penbrs += "<tr><td><span onClick='penBrClick(this.id)'  id='"+index+"'>" + val +"</span>" })
+
+            famPensionerList = ""
+            //familyPensioners.forEach(function (a) { famPensionerList += "<tr><td><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name + " (<mark>"+a.fampen+ "</mark>)</span></td></tr>" })
+            familyPensioners.forEach(function (a) { famPensionerList += "<tr><td class="+ (a.ibeab === 'EAB' ? "ibeab" : " ")+"><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name + " (<mark>"+a.fampen+ "</mark>)</span></td></tr>" })
+            noAccountNo = ""
+            noSbac.forEach(function (a) { noAccountNo += "<tr class='" + a.pentype +"'><td><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name + "</span><td>"+ a.id +"</tr>" })
+            noSrNo = ""
+            noSrno.forEach(function (a) { noSrNo += "<tr class='" + a.pentype +"'><td><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name + "</span><td>"+ a.id +"</tr>" })
+            noBranch = ""
+            noPensionBr.forEach(function (a) { noBranch += "<tr class='" + a.pentype +"'><td><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name + "</span><td>"+ a.id +"</tr>" })
+            document.getElementById('fampenlist').innerHTML = "<table border=1 id='fampentable'>" + famPensionerList + "</table><br><br>"
+            document.getElementById('penac').innerHTML = "<table id='t1' border=1>" + noAccountNo + "</table><br><br>"
+            document.getElementById('nilSRNo').innerHTML = "<table id='t2' border=1>" + noSrNo + "</table><br><br><br><br>"
+            document.getElementById('penbrname').innerHTML = "<table id='t3' border=1>" + noBranch + "</table><br><br><br>"
+            placesTemp = "<table border=1 id='tablePlaces'  >" + placesTable + "</table>"
+            document.getElementById('pdivplacesTable').innerHTML = placesTemp
+            penbrTemp = "<table  border=1 id='penBr'>" + penbrs + "</table>"
+            document.getElementById('ppenbrs').innerHTML = penbrTemp;
+          vsp = activeMembers.filter(a => a.area.substr(0,3) === "VSP").map(a => ({ id: a.id, name: a.name, fampen:a.fampen,ibeab: a.IBorEAB, insured: a.insured, mobile: a.mobile1    }));
+          vij = activeMembers.filter(a => a.area.substr(0,3) === "VIJ").map(a => ({ id: a.id, name: a.name, fampen:a.fampen, ibeab: a.IBorEAB, insured: a.insured , mobile: a.mobile1  }));
+          god = activeMembers.filter(a => a.area.substr(0,3) === "GOD").map(a => ({ id: a.id, name: a.name, fampen:a.fampen , ibeab: a.IBorEAB , insured: a.insured , mobile: a.mobile1   }));
+          seema = activeMembers.filter(a => a.area.substr(0,5) === "SEEMA").map(a => ({ id: a.id, name: a.name , fampen:a.fampen , ibeab: a.IBorEAB , insured: a.insured, mobile: a.mobile1   }));
+          hyd = activeMembers.filter(a => a.area.substr(0,3) === "HYD").map(a => ({ id: a.id, name: a.name, fampen:a.fampen , ibeab: a.IBorEAB , insured: a.insured , mobile: a.mobile1   }));
+          oth = activeMembers.filter(a => a.area.substr(0,3) === "OTH").map(a => ({ id: a.id, name: a.name , fampen:a.fampen, ibeab: a.IBorEAB , insured: a.insured , mobile: a.mobile1   }));
+         eab = activeMembers.filter(a => a.area.substr(-3).toUpperCase() === "EAB").map(a => ({ id: a.id, name: a.name , fampen:a.fampen, ibeab: a.IBorEAB , insured: a.insured , mobile: a.mobile1   }));
+         
+          blank = activeMembers.filter(a => a.area === "BLANK").map(a => ({ id: a.id, name: a.name, fampen:a.fampen , ibeab: a.IBorEAB , insured: a.insured   }));
+          allMembNoWise=activeMembers.map(a => ({ id: a.id, name: a.name, fampen:a.fampen, ibeab: a.IBorEAB  , insured: a.insured , mobile: a.mobile1    })).sort(function(a,b){return a.id - b.id})
+allmemb = activeMembers.map(a => ({ id: a.id, name: a.name , fampen:a.fampen, ibeab: a.IBorEAB  , insured: a.insured, mobile: a.mobile1  }));
+selectedRegion(allmemb,0)
+        }
+        penbrTemp = ""
+        getMyData()
+
+function funCityPerson(a){
+town=LivingIn[a]
+
+//inThisPlace=activeMembers.filter(a => a.place.toUpperCase() === town)
+inThisPlace=activeMembers.filter(a => a.place.toUpperCase().trim() === town)
+
+    numberInThisPlace=inThisPlace.length;
+    unqPinCodes = unq(inThisPlace.map(a => a.pincode).sort())
+
+personsHere=""
+
+for (i=0; i<unqPinCodes.length; i++){
+thispincode=inThisPlace.filter(a =>a.pincode === unqPinCodes[i]) 
+personsHere += "<tr bgcolor=cyan><td colspan=2 align=center>"+inThisPlace[0].place +"-" + unqPinCodes[i]+"<span class='badge'>" +thispincode.length+"</span>"
+thispincode.forEach(function (a) { personsHere += "<tr><td class= '" + a.pentype +"'><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name+ "</span></td><td>"+a.id+"</tr>" })
+}
+
+document.getElementById('ParapersonsInThisCity').innerHTML="<br><br><h4 align=center><span class='badge'>"+numberInThisPlace+"</span>Retirees Living in   <b>"+ town+"</b></h4><table  border=1>" + personsHere +"</table><br><br><br>" 
+document.getElementById("personsInThisCity").style.display = "block";
+document.getElementById("divplacesTable").style.display = "none";
+}
+
+
+penbrIndex=0;
+function penBrClick(penbrIndex){
+i=PensionDrawingBranch[penbrIndex]
+drawingPensionHere = activeMembers.filter(a => a.pensionbr.toUpperCase() === i)
+inthisBranch=""
+drawingPensionHere.forEach(function (a) { inthisBranch += "<tr class='" + a.pentype +"'><td><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name + "</span></td></tr>" })
+
+numberOfPensionsersThisBranch = drawingPensionHere.length
+
+ParaPensionInThisBranch
+document.getElementById('ParaPensionInThisBranch').innerHTML="<br><br><br> <h4 align=center><span class='badge'>"+numberOfPensionsersThisBranch+"</span>Pensioners of  <b> "+ i +"  </b>Branch </h4><table border=1>" + inthisBranch +"<tr><td><tr><td><tr><td></table><br><br><br><br><br>"
+
+document.getElementById("pensionInThisBranch").style.display = "block";
+document.getElementById("divpenbrs").style.display = "none";
+
+
+}
+
+
+
+
+        function dispdata() {
+            let filter = document.getElementById("myInput").value.toLowerCase().replaceAll(" ","")
+            if (filter.length <= 4) { document.getElementById("getnames").innerHTML = "" }
+            if (filter.length >= 3) {
+                toTable = activeMembers.filter(a => a.name.toLowerCase().replaceAll(" ","").includes(filter.toLowerCase()))
+                    .map(a => [a.id, a.name]);
+                tablebody = ""
+                toTable.forEach(function (a) { tablebody += "<span onClick='nameclick(this.id)' id=" + a[0] + ">" + a[1].toUpperCase() + "</span><br>" })
+                document.getElementById("getnames").innerHTML = tablebody + "<br><br><br>"
+            }
+        }
+
+        function nameclick(membershipNo) {
+       //     document.documentElement.scrollTop = 0;
+            toDisplay = "<table border=1><tr>"
+            document.getElementById("myInput").value = ""
+            membno = membershipNo * 1 - 1;
+            membData = tempData.filter(a => a.id === membershipNo * 1)
+            toDisplay += "<tr><td colspan=2><b>Membership No</b> "  + membData[0].id 
+            toDisplay += "<tr><td colspan='2'><b>Address: </b><br>" + membData[0].add1 + "<br>"
+            if (membData[0].add2.length > 0) { toDisplay += membData[0].add2 + "<br>" }
+            if (membData[0].add3.length > 0) { toDisplay += membData[0].add3 + "<br>" }
+            if (membData[0].place.length > 0) { toDisplay += membData[0].place + "  " + membData[0].pincode + "<br>" }
+            if (membData[0].district.length > 0) { toDisplay += membData[0].district + " District <br>" }
+            toDisplay += "<tr><td colspan=2><b>Phones: </b>"
+            if (membData[0].fixed.length > 0) { toDisplay += membData[0].fixed + " / " }
+            
+            if (membData[0].mobile1 > 0) { toDisplay +="<a href=tel:"+membData[0].mobile1 +"><mark style='background:red; color:white'>"+membData[0].mobile1+"</mark></a>"}
+
+          //  if (membData[0].mobile1 > 0) { toDisplay += membData[0].mobile1 }
+            
+            if (membData[0].mobile2 > 0) { toDisplay += " / " + membData[0].mobile2 }
+            toDisplay += "<tr><td colspan=2><b>Email: </b>" + membData[0].email
+            toDisplay += "<tr><td colspan=2><b>S R No: </b>" + membData[0].srno
+            toDisplay += "<tr><td colspan=2><b>Application Scanned:</b>" + membData[0].scanned
+            toDisplay += "<tr><td colspan=2><b>Pension Br:</b>" + membData[0].pensionbr
+            if(membData[0].fampen != ""){
+            toDisplay += "<tr bgcolor=yellow><td colspan=2><b>Family Pension of :</b>" + membData[0].fampen
+            }
+            toDisplay += "<tr><td colspan=2><b>Pension Acc: </b> " + membData[0].sbac
+            whichBank = membData[0].IBorEAB === 'IB' ? "Indian Bank":"e Allahabad Bank"
+            toDisplay += "<tr><td colspan=2><b>Retired from : </b> " + whichBank
+            toDisplay += "<tr><td colspan=2><b>Region : </b> " + membData[0].area.substr(0,3)
+insured = membData[0].insured ===1 ? "Yes" : "No" 
+            toDisplay += "<tr><td colspan=2><b>Insurance: </b> " + insured
+
+//.toString()
+//.replace(/\b[\dX][-. \dX]+(\d{4})\b/g, '******** $1') + "<br>"
+            document.getElementById("buttonsDiv").style.display = "none";
+            document.getElementById("modalData").innerHTML = toDisplay + "<table>"
+            document.getElementById("nameHeader").innerHTML = membData[0].name
+             
+            
+            modal.style.display = "block";
+        }
+        function hide() {
+            hideall()
+            document.getElementById("buttonsDiv").style.display = "block";
+        }
+
+        function hideall() {
+            document.getElementById("div2").style.display = "none";
+            document.getElementById("div1").style.display = "none";
+            document.getElementById("buttonsDiv").style.display = "none";
+            document.getElementById("divFamPen").style.display = "none";
+            document.getElementById("divNoPenAc").style.display = "none";
+            document.getElementById("divNoPenBr").style.display = "none";
+            document.getElementById("divNoSrno").style.display = "none";
+            document.getElementById("ec").style.display = "none";
+            document.getElementById("divplacesTable").style.display = "none";
+            document.getElementById("divpenbrs").style.display = "none";
+            document.getElementById("pensionInThisBranch").style.display = "none";
+            document.getElementById("personsInThisCity").style.display = "none";
+            document.getElementById("regions").style.display = "none";
+             document.getElementById("welf").style.display = "none";
+        }
+
+        function searchClick() {
+            hideall()
+            document.getElementById("div1").style.display = "block";
+        }
+
+        function ecShow() {
+            hideall()
+            document.getElementById("ec").style.display = "block";
+        }
+
+     function welfare() {
+            hideall()
+         document.getElementById("welfareIframe").src = "https://gvssmark.github.io/ibra/welfare.html";
+
+
+            document.getElementById("welf").style.display = "block";
+        }
+        function FamBtnClick() {
+            hideall()
+            document.getElementById("divFamPen").style.display = "block";
+        }
+
+        function noPenAc() {
+            hideall()
+            document.getElementById("divNoPenAc").style.display = "block";
+        }
+
+        function noPenbr() {
+            hideall()
+            document.getElementById("divNoPenBr").style.display = "block";
+        }
+
+        function nosrno() {
+            hideall()
+            document.getElementById("divNoSrno").style.display = "block";
+        }
+
+
+        function placeStay() {
+            hideall()
+            document.getElementById("divplacesTable").style.display = "block";
+        }
+
+        
+
+        
+
+        function brsPens() {
+            hideall()
+            document.getElementById("divpenbrs").style.display = "block";
+        }
+
+
+        function tableClick(table) {
+            if (table != null) {
+                for (var i = 0; i < table.rows.length; i++) {
+                    for (var j = 0; j < table.rows[i].cells.length; j++)
+                        table.rows[i].cells[j].onclick = function () {
+                            myVar = this.innerText;
+                        };
+                }
+            }
+        }
+        
+   function selectedRegion(array,n){
+   document.documentElement.scrollTop = 0;
+   famPensionersCount = array.filter(a =>a.fampen.length>0).length
+   eabcount = array.filter(a =>a.ibeab === 'EAB' ).length
+   insuredcount = array.filter(a =>a.insured === 1 ).length
+regions=["All", "Visakhapatnam", "Godavari", "Vijayawada", "Seema", "Hyderabad", "Other States","e Allahabad","Membershipwise"]
+document.getElementById('regionHeading').innerHTML="Memebers in "+ regions[n]+ " Region<span class='badge'>"+array.length+"</span><span class='badge1'>" +famPensionersCount+"</span> <span class='eabbadge'>" +eabcount+"</span><span class='insurancebigbadge'>"+ insuredcount +"</span>"
+inThisRegion="<table id='regionTable'  border=1>"
+array.forEach(function (a) { inThisRegion += "<tr ><td class='"+ (a.fampen.length>0 ? "fam" : "ser") +"'><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name + (a.insured ===1 ? "&nbsp;&nbsp<span class='insurancebadge'>"+ a.insured +"</span>" : "")+  (a.fampen.length>0 ? " -- <mark>"+a.fampen+"</mark>" : " ") +  a.mobile +"<td class='"+ (a.ibeab === 'EAB' ? "ibeab" : "")+"'>" + a.id +"</span></td></tr>" })
+       inThisRegion +="</table><br><br><br>" 
+document.getElementById('paraInThisRegion').innerHTML=inThisRegion
+}
+//IBorEAB
+
+ function filterFamPensionerName() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("fampenSearch");
+      filter = input.value.toUpperCase().replaceAll(" ","");
+      table = document.getElementById("fampentable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().replaceAll(" ","").indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+
+ function fiterName() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("input_fitterName");
+      filter = input.value.toUpperCase().replaceAll(" ","");
+      table = document.getElementById("regionTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().replaceAll(" ","").indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+   
+   var btnContainer = document.getElementById("regions");
+   var btns = btnContainer.getElementsByClassName("list");
+   for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+isInsured = (srno) => insdata.filter(a => a.SRNO === srno).length;
+
+   
+   
+           function unq(a) {
+                return Array.from(new Set(a));
+            }
+    </script>
+    
+</body>
+
+</html>
+
+
