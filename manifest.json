@@ -1,0 +1,24 @@
+{
+    "short_name": "IBRA",
+    "name": "Indian Bank Retirees' Association",
+    "icons": [
+      {
+        "src": "images/ibra192.png",
+        "type": "image/png",
+        "sizes": "192x192",
+           "purpose": "any maskable"
+      },
+              {
+        "src": "images/ibra512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+
+    ],
+    "start_url": "index.html",
+    "background_color": "#ccff99",
+      "theme_color": "#3367D6",
+    "display": "standalone",
+    "description": "IBRA",
+     "orientation" : "portrait" 
+    }
