@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -287,7 +288,7 @@ body {
             /* Location of the box */
             left: 0;
             top: 0;
-            width: 100%;
+            width: 360px;
             /* Full width */
             height: 100%;
             /* Full height */
@@ -351,6 +352,7 @@ li {
   text-decoration: none;
 font-size:x-small;
 }
+        img{border-radius:50px;}
 
 
 </style>
@@ -648,11 +650,15 @@ document.getElementById("divpenbrs").style.display = "none";
             membno = membershipNo * 1 - 1;
             membData = tempData.filter(a => a.id === membershipNo * 1)
             toDisplay += "<tr><td colspan=2><b>Membership No</b> "  + membData[0].id 
-            toDisplay += "<tr><td colspan='2'><b>Address: </b><br>" + membData[0].add1 + "<br>"
+            toDisplay += "<tr><td ><b>Address: </b><br>" + membData[0].add1 + "<br>"
             if (membData[0].add2.length > 0) { toDisplay += membData[0].add2 + "<br>" }
             if (membData[0].add3.length > 0) { toDisplay += membData[0].add3 + "<br>" }
             if (membData[0].place.length > 0) { toDisplay += membData[0].place + "  " + membData[0].pincode + "<br>" }
             if (membData[0].district.length > 0) { toDisplay += membData[0].district + " District <br>" }
+            phid= membData[0].photo.length >5 ? membData[0].photo :"1QX-GUIL2g6tf2QqMG3_gRZIaUeCTRR0X"
+  
+ph= "<img  src='https://drive.google.com/uc?export=view&id=" + phid +"' width='100' height='100'>"
+            toDisplay += "<td width=100>" + ph
             toDisplay += "<tr><td colspan=2><b>Phones: </b>"
             if (membData[0].fixed.length > 0) { toDisplay += membData[0].fixed + " / " }
             
