@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 
@@ -6,12 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IBRA-APTS</title>
     <script src="index.js" defer></script>
+<script src="https://drive.google.com/uc?id=1-6YmzpDVGtRCqp__CRDHtEocDMDUJpi_"></script> 
 
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#317EFB" />
     <link rel="apple-touch-icon" href="images/ibra512.png">
-    <script src="https://drive.google.com/uc?id=1EeiSTfOD-0UA4hz1bwKwW2T7KM1XnndGx"></script> 
-   <script src="https://gvssmark.github.io/ibra/insdata.js"></script> 
 
 <style>
 mark{background:blue; color:white; font-size:x-small}
@@ -531,7 +531,7 @@ document.getElementById("regions").style.display = "block";
         //    familyPensioners = activeMembers.filter(a => a.fampen !== "").map(a => ({ id: a.id, name: a.name, fampen: a.fampen }));
             activeMembers.forEach(function(element){element.IBorEAB = (element.area.substr(-3).toUpperCase() ==='EAB' ? "EAB" : "IB"), element.pentype = (element.fampen.length>0 ? "fam" : "ser")})
 familyPensioners = activeMembers.filter(a => a.fampen !== "").map(a => ({ id: a.id, name: a.name, fampen: a.fampen, ibeab: a.IBorEAB  }));
-activeMembers.forEach(function(element){element.insured = isInsured(element.srno)})  
+activeMembers.forEach(function(element){element.insured = isInsured(element.id)})  
             noSbac = activeMembers.filter(a => a.sbac === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
             noPensionBr = activeMembers.filter(a => a.pensionbr === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
             noSrno = activeMembers.filter(a => a.srno === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
@@ -838,7 +838,6 @@ document.getElementById('paraInThisRegion').innerHTML=inThisRegion
     this.className += " active";
   });
 }
-isInsured = (srno) => insdata.filter(a => a.SRNO === srno).length;
 
    
    
