@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html>
 
@@ -531,7 +532,7 @@ document.getElementById("regions").style.display = "block";
         //    familyPensioners = activeMembers.filter(a => a.fampen !== "").map(a => ({ id: a.id, name: a.name, fampen: a.fampen }));
             activeMembers.forEach(function(element){element.IBorEAB = (element.area.substr(-3).toUpperCase() ==='EAB' ? "EAB" : "IB"), element.pentype = (element.fampen.length>0 ? "fam" : "ser")})
 familyPensioners = activeMembers.filter(a => a.fampen !== "").map(a => ({ id: a.id, name: a.name, fampen: a.fampen, ibeab: a.IBorEAB  }));
-activeMembers.forEach(function(element){element.insured = isInsured(element.id)})  
+//activeMembers.forEach(function(element){element.insured = isInsured(element.id)})  
             noSbac = activeMembers.filter(a => a.sbac === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
             noPensionBr = activeMembers.filter(a => a.pensionbr === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
             noSrno = activeMembers.filter(a => a.srno === "").map(a => ({ id: a.id, name: a.name, pentype: a.pentype }));
@@ -679,7 +680,7 @@ ph= "<img  src='https://drive.google.com/uc?export=view&id=" + phid +"' width='1
             toDisplay += "<tr><td colspan=2><b>Retired from : </b> " + whichBank
             toDisplay += "<tr><td colspan=2><b>Region : </b> " + membData[0].area.substr(0,3)
 insured = membData[0].insured ===1 ? "Yes" : "No" 
-            toDisplay += "<tr><td colspan=2><b>Insurance: </b> " + insured
+       //     toDisplay += "<tr><td colspan=2><b>Insurance: </b> " + insured
 
 //.toString()
 //.replace(/\b[\dX][-. \dX]+(\d{4})\b/g, '******** $1') + "<br>"
@@ -782,7 +783,7 @@ insured = membData[0].insured ===1 ? "Yes" : "No"
    eabcount = array.filter(a =>a.ibeab === 'EAB' ).length
    insuredcount = array.filter(a =>a.insured === 1 ).length
 regions=["All", "Visakhapatnam", "Godavari", "Vijayawada", "Seema", "Hyderabad", "Other States","e Allahabad","Membershipwise"]
-document.getElementById('regionHeading').innerHTML="Memebers in "+ regions[n]+ " Region<span class='badge'>"+array.length+"</span><span class='badge1'>" +famPensionersCount+"</span> <span class='eabbadge'>" +eabcount+"</span><span class='insurancebigbadge'>"+ insuredcount +"</span>"
+document.getElementById('regionHeading').innerHTML="Memebers in "+ regions[n]+ " Region<span class='badge'>"+array.length+"</span><span class='badge1'>" +famPensionersCount+"</span> <span class='eabbadge'>" +eabcount+"</span>"
 inThisRegion="<table id='regionTable'  border=1>"
 array.forEach(function (a) { inThisRegion += "<tr ><td class='"+ (a.fampen.length>0 ? "fam" : "ser") +"'><span onClick='nameclick(this.id)' id=" + a.id + ">" + a.name + (a.insured ===1 ? "&nbsp;&nbsp<span class='insurancebadge'>"+ a.insured +"</span>" : "")+  (a.fampen.length>0 ? " -- <mark>"+a.fampen+"</mark>" : " ") +  a.mobile +"<td class='"+ (a.ibeab === 'EAB' ? "ibeab" : "")+"'>" + a.id +"</span></td></tr>" })
        inThisRegion +="</table><br><br><br>" 
