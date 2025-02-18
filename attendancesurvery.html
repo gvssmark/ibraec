@@ -3,6 +3,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +59,7 @@
 <body>
 <div id='welcome'>
 
-<h3>Invitation </h3>
+<h3 onclick='showHideReport()'>Invitation </h3>
 <h3>XIII Biennial General Body <br>
 SILVER JUBILEE CONFERENCE <br>of IBRA</h3>
 <div id='postsubmit'>
@@ -68,8 +69,8 @@ Please mark your Attendance here.<p>
 <li>Please input number of persons attending.
 <li>Duplicate entry restricted.
 <li>You are allowed to change Mobile No only if required.
-
 </ul>
+<h3 onclick='showHideReport()' style='color:red; text-align:right;'>Show / Hide Report</h3>
 </div>
 </div>
 
@@ -249,10 +250,10 @@ formData.append('spreadsheetId', ShId);
       resetInputs();
       await fetchData();
       displayMessage('Noted successfully!', 'blue') ;
-      showHideReport()
-      document.getElementById('postsubmit').style.display='none'
-      document.getElementById('report').style.display='block'
-      document.getElementById('attend25').style.display='none'
+      //showHideReport()
+     // document.getElementById('postsubmit').style.display='none'
+     // document.getElementById('report').style.display='block'
+     // document.getElementById('attend25').style.display='none'
       
 	  
     } catch (error) {
@@ -295,7 +296,7 @@ formData.append('spreadsheetId', ShId);
 function generateReport() {
   attendanceData.sort((a, b) => a[0] - b[0]);
 
-  let header = `<br><h2>List of retirees likely to attend</h2><table style='font-size:small' border=1><tr><td>Sl No</td><td>SR No</td><td>Name</td><td>Mobile No<td>No<td>Araku<td>Srikakulam<td>Date</td></tr>`;
+  let header = `<br><h2>List of retirees likely to attend</h2>&nbsp;&nbsp;&nbsp;Trip1: Araku &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Trip2: Srikakulam<table style='font-size:small' border=1><tr><td>Sl No</td><td>SR No</td><td>Name</td><td>Mobile No<td>No<td>Trip1<td>Trip2<td>Date</td></tr>`;
 
   for (let i = 0; i < attendanceData.length; i++) {
 //time=new Date(attendanceData[i][4]).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
