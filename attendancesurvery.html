@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
     }
     label { display: block; margin-top: 10px; color: blue; }
-    input { width: 95%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; outline: none; font-size: 1.5em; letter-spacing: 2px;}
+    input { width: 95%; padding: 5px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; outline: none; font-size: 1.5em; letter-spacing: 2px;}
     button { width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; font-size: large; color: white; }
     button:disabled { background-color: #ccc; cursor: not-allowed; }
     p { color: red; font-size: 14px; }
@@ -49,12 +50,26 @@
     /* bottom: 26px; */
     /* margin-right: 0px; */
     margin-top: -34px;}
-	  
+	  .message {color:black; text-align:justify}
   </style>
 </head>
 <body>
-<h3>IBRA GENERAL BODY - VISAKHAPATNAM</h3>
-<h2 onclick='showHideReport()'>If Your Are Attending, Please fill</h2>
+<div id='welcome'>
+
+<h3>Invitation </h3>
+<h3>XIII Biennial General Body <br>
+SILVER JUBILEE CONFERENCE <br>of IBRA</h3>
+<div id='postsubmit'>
+<p class='message'>Join us at Visakhapatnam on 21st March, 2025 for the gorgeous Silver Jubilee Conference of our Indian Bank Retirees Association.
+Please mark your Attendance here.<p>
+<ul>
+<li>Please input number of persons attending.
+<li>Duplicate entry restricted.
+<li>You are allowed to change Mobile No only if required.
+
+</ul>
+</div>
+</div>
 
 <form name="submit-to-google-sheet" id="attend25">
   <label for="srNo">SR No:</label>
@@ -66,13 +81,31 @@
   <label for="mobileNo">Mobile Number:</label>
   <input type="tel" id="mobileNo" name="Mobile" pattern="[6-9][0-9]{9}" placeholder="Mobile" required  onclick="this.select()" autocomplete="off"/>
 
-  <input type="text" id="attendanceDate" name="Attendance" readonly style="display: none;" />
+  <label for="NoAttend">Number Attending:</label>
+  <input type="number" id="persons" placeholder="Number of Persons" name="Persons" pattern="\d*"  min="1" max="2" required value=1/>
+  
 
-  <button id="okButton" style="background: green;" disabled>OK</button>
+  <input type="text" id="attendanceDate" name="Attendance" readonly style="display: none;" />
+  
+  <table ><tr align=center ><td>
+  <label for="araku">Araku Trip:</label>  <select name="araku" id="araku">
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
+  </select>
+  <td>
+  
+  <label for="srikakulam">Srikakulam Trip:</label>
+  <select name="srikakulam" id="srikakulam">
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
+  </select>  
+  </table>
+  
+  <button id="okButton"  onclick='showHideReport()' style="background: green;" disabled>OK</button>
   <button type="button" style="background: red;" onclick="resetForm()">Cancel</button>
 
   <p id="message">&nbsp</p>
-  <div id="message1">0</div>
+  <div id="message1"  >0</div>
   
 </form>
 
@@ -91,7 +124,7 @@ const form = document.forms['submit-to-google-sheet'];
   const loader = document.getElementById('loader');
   const srNoInput = document.getElementById('srNo');
   const nameInput = document.getElementById('name');
-  //const membershipNoInput = document.getElementById('membershipNo');
+  const personsInput = document.getElementById('persons');
   const mobileNoInput = document.getElementById('mobileNo');
   const attendanceDateInput = document.getElementById('attendanceDate');
   const okButton = document.getElementById('okButton');
@@ -221,6 +254,7 @@ formData.append('spreadsheetId', ShId);
     } finally {
       showLoader(false);
       toggleFormAccessibility(true);
+      showHideReport()
     }
   });
 
@@ -253,13 +287,13 @@ function countatt(){document.getElementById('message1').innerHTML = attendanceDa
 function generateReport() {
   attendanceData.sort((a, b) => a[0] - b[0]);
 
-  let header = `<br><table border=1><tr><td>Sl No</td><td>SR No</td><td>Name</td><td>Mobile No<td>Time</td></tr>`;
+  let header = `<br><h2>List of retirees likely to attend</h2><table style='font-size:small' border=1><tr><td>Sl No</td><td>SR No</td><td>Name</td><td>Mobile No<td>No<td>Araku<td>Srikakulam<td>Date</td></tr>`;
 
   for (let i = 0; i < attendanceData.length; i++) {
 //time=new Date(attendanceData[i][4]).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
-time= new Date(attendanceData[i][3]).toLocaleTimeString("en-GB") +" - " + new Date(attendanceData[i][3]).toLocaleTimeString("en-GB").substr(0,5)    
-    header += `<tr><td>${i + 1}</td><td>${attendanceData[i][0]}</td><td>${titleCase(attendanceData[i][1])}</td><td>${attendanceData[i][2]}</td><td>${time}</td></tr>`;
-
+time= new Date(attendanceData[i][6]).toLocaleDateString("en-GB")    
+    header += `<tr><td>${i + 1}</td><td>${attendanceData[i][0]}</td><td>${titleCase(attendanceData[i][1])}</td><td>${attendanceData[i][2]}</td><td>${attendanceData[i][3]}<td>${attendanceData[i][4]}<td>${attendanceData[i][5]}<td>${time}</td></tr>`;
+document.getElementById('postsubmit').style.display='none'
   }
 
   header += `</table><br><br>`;
