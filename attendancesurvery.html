@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,11 +63,11 @@
 SILVER JUBILEE CONFERENCE <br>of IBRA</h3>
 <div id='postsubmit'>
 <p class='message'>Join us at Visakhapatnam on 21st March, 2025 for the gorgeous Silver Jubilee Conference of our Indian Bank Retirees Association.
-Please mark your Attendance here.<p>
+Please mark your Attendance here.<p>
 <ul>
 <li>Please input number of persons attending.
 <li>Duplicate entry restricted.
-<li>You are allowed to change Mobile No only if required.
+<li>You are allowed to change Mobile No only if required.
 
 </ul>
 </div>
@@ -102,7 +103,7 @@ Please mark your Attendance here.<p>
   </select>  
   </table>
   
-  <button id="okButton"  onclick='showHideReport()' style="background: green;" disabled>SUBMIT</button>
+  <button id="okButton"   style="background: green;" disabled>SUBMIT</button>
   <button type="button" style="background: red;" onclick="resetForm()">Cancel</button>
 
   <p id="message">&nbsp</p>
@@ -151,7 +152,7 @@ displayMessage('New Data','blue')
     showLoader(false);
     toggleFormAccessibility(true);
     generateReport();
-	countatt()
+	//countatt()
   }
 
   async function getMemberData() {
@@ -248,6 +249,11 @@ formData.append('spreadsheetId', ShId);
       resetInputs();
       await fetchData();
       displayMessage('Noted successfully!', 'blue') ;
+      showHideReport()
+      document.getElementById('postsubmit').style.display='none'
+      document.getElementById('report').style.display='block'
+      document.getElementById('attend25').style.display='none'
+      
 	  
     } catch (error) {
       console.error('Error:', error);
@@ -255,8 +261,8 @@ formData.append('spreadsheetId', ShId);
     } finally {
       showLoader(false);
       toggleFormAccessibility(true);
-      showHideReport()
-      document.getElementById('postsubmit').style.display='none'
+      //generateReport();
+      
     }
   });
 
