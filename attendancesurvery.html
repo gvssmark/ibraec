@@ -105,7 +105,7 @@ Please mark your Attendance here.<p>
   <button type="button" style="background: red;" onclick="resetForm()">Cancel</button>
 
   <p id="message">&nbsp</p>
-  <div id="message1"  >0</div>
+<!--  <div id="message1"  >0</div> -->
   
 </form>
 
@@ -255,6 +255,7 @@ formData.append('spreadsheetId', ShId);
       showLoader(false);
       toggleFormAccessibility(true);
       showHideReport()
+      document.getElementById('postsubmit').style.display='none'
     }
   });
 
@@ -280,7 +281,7 @@ formData.append('spreadsheetId', ShId);
 	
   }
 
-function countatt(){document.getElementById('message1').innerHTML = attendanceData.length}
+//function countatt(){document.getElementById('message1').innerHTML = attendanceData.length}
 
   fetchData();
 
@@ -293,7 +294,7 @@ function generateReport() {
 //time=new Date(attendanceData[i][4]).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
 time= new Date(attendanceData[i][6]).toLocaleDateString("en-GB")    
     header += `<tr><td>${i + 1}</td><td>${attendanceData[i][0]}</td><td>${titleCase(attendanceData[i][1])}</td><td>${attendanceData[i][2]}</td><td>${attendanceData[i][3]}<td>${attendanceData[i][4]}<td>${attendanceData[i][5]}<td>${time}</td></tr>`;
-document.getElementById('postsubmit').style.display='none'
+
   }
 
   header += `</table><br><br>`;
