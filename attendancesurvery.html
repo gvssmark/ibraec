@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,8 +64,9 @@ Please mark your Attendance here.<p>
 <li>Duplicate entry restricted.
 <li>You can update Mobile if required.
 </ul>
-<h3 onclick='showHideReport()' style='color:red; text-align:right;'>Show / Hide Report&nbsp;&nbsp; </h3>
+
 </div>
+<h3 onclick='showHideReport()' id='shhide' style='color:red; text-align:right;'>Show Report&nbsp;&nbsp; </h3>
 </div>
 
 <form name="submit-to-google-sheet" id="attend25">
@@ -305,13 +307,20 @@ time= new Date(attendanceData[i][6]).toLocaleDateString("en-GB")
 
 function showHideReport(){
 var x = document.getElementById('report');
+var y = document.getElementById('postsubmit');
+var z = document.getElementById('shhide');
+
 x.style.backgroundColor='white'
   if (x.style.display === 'none') {
   form.style.display = 'none';
     x.style.display = 'block';
+    y.style.display = 'none';
+    z.innerHTML ='Show Form'
   } else {
     x.style.display = 'none';
     form.style.display = 'block';
+    y.style.display = 'block';
+    z.innerHTML ='Show Report'
   }
 }
 
