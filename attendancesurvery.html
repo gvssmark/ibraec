@@ -331,20 +331,20 @@ var y = document.getElementById('postsubmit');
 var z = document.getElementById('shhide');
 
 x.style.backgroundColor='white'
-  if (x.style.display === 'none') {
+  if (z.innerHTML ==='Reports') {
   form.style.display = 'none';
     x.style.display = 'block';
     xx.style.display = 'block';
     
     y.style.display = 'none';
-    z.innerHTML ='Show Form'
-  } else {
+    z.innerHTML ='Form'
+  } else {z.innerHTML ==='Form'
     x.style.display = 'none';
     xx.style.display = 'none';
     
     form.style.display = 'block';
     y.style.display = 'block';
-    z.innerHTML ='Show Report'
+    z.innerHTML ='Reports'
   }
   window.scrollTo(0, 0);
 }
