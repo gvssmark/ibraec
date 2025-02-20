@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +31,7 @@
      #report{display:none; }
       table {border-collapse: collapse; width:96%; margin:10px;}
 	  
-	  
+	 #pltable 
 	  
 	#message1{      width: 50px;
     height: 50px;
@@ -76,7 +77,7 @@ Please mark your Attendance here.<p>
 </ul>
 
 </div>
-<h3 onclick='showHideReport()' id='shhide' style='color:red; text-align:right;'>Show Report&nbsp;&nbsp; </h3>
+<h3 onclick='showHideReport()' id='shhide' style='color:white;background:red; padding:5px; position:fixed; top:0px;left:10px; margin-top:70px;'>Show Report&nbsp;&nbsp; </h3>
 
 </div>
 
@@ -119,7 +120,9 @@ Please mark your Attendance here.<p>
 </form>
 
 <div class="loader" id="loader"></div>
+ 
  <div id='report'></div>
+ <div id='plreport'></div>
 <script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbytzFhmFLKbTpwiMhtvPUGyi26GTFg2i9cIPkbLQKrEfRd4Mb-ezKptfrf7nm-fSzUM/exec';
   const dataData = 'https://script.google.com/macros/s/AKfycbyrOAeTWWte70yEzUu4xHXh327c8Q1UQbQzVaF33x_m9zn7QweP1xESUNwgvpk6BLMx/exec';
@@ -138,7 +141,7 @@ const form = document.forms['submit-to-google-sheet'];
   const attendanceDateInput = document.getElementById('attendanceDate');
   const okButton = document.getElementById('okButton');
   const messageElement = document.getElementById('message');
-
+places=''
   let memberData = [];
   let attendanceData = [];
   
@@ -315,12 +318,13 @@ time= new Date(attendanceData[i][6]).toLocaleDateString("en-GB")
   }
 
   header += `</table><br><br>`;
-  
-  document.getElementById('report').innerHTML = header
+//generateplacesReport();  
+  document.getElementById('report').innerHTML = header 
   
 }
 
 function showHideReport(){
+var xx = document.getElementById('plreport');
 var x = document.getElementById('report');
 var y = document.getElementById('postsubmit');
 var z = document.getElementById('shhide');
@@ -329,14 +333,19 @@ x.style.backgroundColor='white'
   if (x.style.display === 'none') {
   form.style.display = 'none';
     x.style.display = 'block';
+    xx.style.display = 'block';
+    
     y.style.display = 'none';
     z.innerHTML ='Show Form'
   } else {
     x.style.display = 'none';
+    xx.style.display = 'none';
+    
     form.style.display = 'block';
     y.style.display = 'block';
     z.innerHTML ='Show Report'
   }
+  window.scrollTo(0, 0);
 }
 
 function titleCase(str) {
@@ -365,7 +374,30 @@ function fiterName() {
     }
   }
 }
- 
+ async function placesCount() {
+let url ='https://script.google.com/macros/s/AKfycbxtgR9kI0Qz3MYwUR_9oZdsTQX8xxIzPGdOIoCXt_TgJtyrtYl4hne_aA_iZK6CO4GpOw/exec'
+    let pcount = await fetch(url);
+    let placesTemp = await pcount.json();
+    placesData = placesTemp.map(subArray => [subArray[15],subArray[16], subArray[17]]).filter(a=> a[0] !=="");
+placesData[1][0]='Unknown'
+ generateplacesReport();
+console.log(placesData )
+  }
+  placesCount()
+  
+  
+  function generateplacesReport(){
+places =`<h3>Retirees Place of Stay wise & Count</h3>As per address book<table border=1 id='pltable' style='border:1px solid black; font-size:small'><tr><td>Place<td>Count`
+for (i=1; i<placesData.length; i++){
+places += `<tr><td>${placesData[i][0]} <td>${placesData[i][1]}`
+}
+places += `<tr><td>Total<td>${placesData[0][2]}</table>`
+document.getElementById('plreport').innerHTML = places 
+
+
+}
+  
+  
 
 
 </script>
